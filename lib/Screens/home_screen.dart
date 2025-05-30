@@ -36,6 +36,24 @@ class HomeScreen extends StatelessWidget {
           }
         },
       ),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.all(40),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 5,
+              offset: Offset(1, 1),
+              color: Colors.black.withValues(alpha: 0.5),
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [Text("hello"), Text("Hello2")],
+        ),
+      ),
     );
   }
 
