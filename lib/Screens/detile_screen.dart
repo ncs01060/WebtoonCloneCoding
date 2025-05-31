@@ -27,16 +27,19 @@ class _DetileScreenState extends State<DetileScreen> {
 
   bool isLiked = false;
 
-  Future initPerf() async {
+  Future initPrefs() async {
     pref = await SharedPreferences.getInstance();
+
     final likedToons = pref.getStringList('likedToons');
+
     if (likedToons != null) {
-      if (likedToons.contains(widget.id) == true) {}
+      if (likedToons.contains(widget.id) == true) {
+        setState(() {
+          isLiked = true;
+        });
+      }
     } else {
-      pref.setStringList('likedToons', []);
-      setState(() {
-        isLiked = true;
-      });
+      await pref.setStringList('likedToons', []);
     }
   }
 
@@ -45,7 +48,7 @@ class _DetileScreenState extends State<DetileScreen> {
     super.initState();
     webtoon = ApiService.getToonById(widget.id);
     episodes = ApiService.getLatestEpisodoesById(widget.id);
-    initPerf();
+    initPrefs();
   }
 
   onHeartTap() async {
@@ -73,8 +76,8 @@ class _DetileScreenState extends State<DetileScreen> {
         backgroundColor: Colors.white,
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: isLiked ? Icon(Icons.favorite) : Icon(Icons.favorite_outline),
+            onPressed: onHeartTap,
+            icon: Icon(isLiked ? Icons.favorite : Icons.favorite_outline),
           ),
         ],
         title: Text(

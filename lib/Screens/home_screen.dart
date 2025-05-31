@@ -1,5 +1,6 @@
 import 'package:first_app/models/webtoon_model.dart';
 import 'package:first_app/services/api_service.dart';
+import 'package:first_app/widgets/bottom_widget.dart';
 import 'package:first_app/widgets/webtoon_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -36,24 +37,7 @@ class HomeScreen extends StatelessWidget {
           }
         },
       ),
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.all(40),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 5,
-              offset: Offset(1, 1),
-              color: Colors.black.withValues(alpha: 0.5),
-            ),
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [Text("hello"), Text("Hello2")],
-        ),
-      ),
+      bottomNavigationBar: BottomWidget(),
     );
   }
 
